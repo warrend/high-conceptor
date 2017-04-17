@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :logline_category do
-    logline nil
-    category nil
+    logline 1
+    category 1
   end
 end

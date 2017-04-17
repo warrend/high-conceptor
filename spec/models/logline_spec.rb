@@ -36,7 +36,6 @@ describe Logline do
 			expect(logline.categories.count).to eq(2)
 		end
 
-
 	end
  
   # describe 'associations' do
