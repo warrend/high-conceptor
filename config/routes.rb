@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
 	
-	root to: 'pages/index'
+	root to: 'pages#index'
 
-  get '/about' => 'pages/about'
+  get '/about' => 'pages#about'
+  get '/' => 'pages#index'
 
 	# Sessions
   get '/login' => 'sessions#new'
