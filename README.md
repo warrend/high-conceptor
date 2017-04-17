@@ -1,24 +1,14 @@
-# README
+# High Conceptor
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+High Concepter is a rails app for creating and rating movie & TV loglines.
 
-Things you may want to cover:
++ Omniauth lets Github users login
++ Bcrypt gem for authorization
++ Users can add and rate loglines
++ See the top rated loglines
 
-* Ruby version
+## Installation
 
-* System dependencies
+## Usage
 
-* Configuration
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
