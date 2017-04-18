@@ -20,6 +20,10 @@ gem 'bcrypt', '~> 3.1.7'
 gem "faker"
 gem "friendly_id"
 
+gem "omniauth"
+gem "omniauth-github"
+gem "figaro"
+
 group :development, :test do
   gem 'byebug', platform: :mri
   gem "rspec-rails"

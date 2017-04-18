@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170417045647) do
+ActiveRecord::Schema.define(version: 20170418181808) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -49,8 +49,9 @@ ActiveRecord::Schema.define(version: 20170417045647) do
     t.string   "name"
     t.string   "email"
     t.string   "password_digest"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.integer  "uid",             limit: 8
   end
 
 end

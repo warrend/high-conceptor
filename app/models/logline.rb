@@ -5,4 +5,5 @@ class Logline < ApplicationRecord
   has_many :categories, through: :logline_categories
 
   validates :content, presence: true
+  validates :content, length: { in: 3..225 }
 end
