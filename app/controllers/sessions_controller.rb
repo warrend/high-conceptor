@@ -12,7 +12,8 @@ class SessionsController < ApplicationController
         session[:user_id] = user.id
         redirect_to root_path
       else
-        redirect_to login_path
+        flash[:warning] = "There was an error while trying to authenticate you..."
+        auth_failure
       end
     end
   end
@@ -20,6 +21,10 @@ class SessionsController < ApplicationController
   def destroy
     session.clear
     redirect_to login_path
+  end
+
+  def auth_failure
+    redirect_to root_path
   end
 
 end
