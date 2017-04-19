@@ -3,14 +3,16 @@ class LoglinesController < ApplicationController
 
 	def index
 		if params[:user_id]
-      @user = User.find(params[:user_id]).loglines
+      @user = User.find(params[:user_id])
+			@loglines = @user.loglines
     else
 			@loglines = Logline.all
     end
 	end
 
 	def show
-		@logline = @user.loglines.find(params[:user_id])
+		@user = User.find_by_id(params[:user_id])
+		@logline = @user.loglines.find_by_id(params[:id])
 	end
 
 	def new
@@ -18,9 +20,10 @@ class LoglinesController < ApplicationController
 	end
 
 	def create
-		@logline = Logline.new(logline_params)
+		@user = current_user
+		@logline = @user.loglines.new(logline_params)
 		if @logline.save
-			redirect_to logline_path(@user, @logline), notice: "Successfully created a logline!"
+			redirect_to user_logline_path(@user, @logline), notice: "Successfully created a logline!"
 		else
 			flash[:error] = "Something went wrong!"
 		end
