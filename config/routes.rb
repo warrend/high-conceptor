@@ -18,6 +18,8 @@ Rails.application.routes.draw do
 	get '/signup' => 'users#new'
   post '/users' => 'users#create'
 
-  resources :users
+  resources :users do
+    resources :loglines
+  end 
 
 end
