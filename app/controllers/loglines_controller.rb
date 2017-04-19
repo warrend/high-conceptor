@@ -1,5 +1,5 @@
 class LoglinesController < ApplicationController
-	before_action :set_logline, only: [:show, :edit, :update, :create]
+	before_action :set_logline, only: [:edit, :update, :create]
 
 	def index
 		if params[:user_id]
@@ -11,7 +11,7 @@ class LoglinesController < ApplicationController
 	end
 
 	def show
-		@user = User.find_by_id(params[:user_id])
+		@user = User.find(params[:user_id])
 		@logline = @user.loglines.find_by_id(params[:id])
 	end
 

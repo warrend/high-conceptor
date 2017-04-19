@@ -1,4 +1,9 @@
-Hello, Github user!
-<%= @user.name %>
+<h1><%= @user.name %></h1>
+<% @user.loglines.reverse.each do |logline| %>
+	<div>
+		<p><%= logline.content %></p>
+	</div><br>
+<% end %>
 
-<%= link_to "Log Out", logout_path %>
+<p><%= link_to "Log Out", logout_path if current_user %></p>
+<%= link_to "Back to Public Loglines", root_path %>

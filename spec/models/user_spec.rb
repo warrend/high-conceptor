@@ -51,6 +51,7 @@ RSpec.describe User, type: :model do
 
     it "has many loglines" do 
       user = create(:user)
+
       logline1 = build(:logline)
       logline2 = build(:logline)
 
@@ -65,9 +66,11 @@ RSpec.describe User, type: :model do
     it "has many logline ratings" do 
       user = create(:user)
       reviewer = create(:user)
+
       logline = create(:logline)
       user.loglines << logline 
       user.save
+
       rating = create(:rating, user: reviewer, logline: logline)
       rating2 = create(:rating, user: reviewer, logline: logline)
 
@@ -87,4 +90,5 @@ RSpec.describe User, type: :model do
     end
 
   end
+  
 end
