@@ -1,6 +1,7 @@
 require "rails_helper"
 
 RSpec.describe User, type: :model do
+
   it "has a valid user factory with name, email, and password" do 
     expect(build(:user)).to be_valid
   end
@@ -41,4 +42,29 @@ RSpec.describe User, type: :model do
     end
 
   end
+
+  describe "relationships" do 
+    it "validates a logline factory" do 
+      expect(build(:logline)).to be_valid
+    end
+
+    it "has many loglines" do 
+      user = create(:user)
+      logline1 = build(:logline)
+      logline2 = build(:logline)
+
+      user.loglines << logline1 
+      user.loglines << logline2
+      user.save
+
+      expect(user.loglines.count).to eq(2)
+      expect(user.loglines.last.user).to eq(user) 
+    end
+
+    it "has many ratings"
+      
+    end
+
+  end
+
 end

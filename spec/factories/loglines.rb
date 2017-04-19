@@ -1,6 +1,7 @@
+require 'faker'
+
 FactoryGirl.define do
   factory :logline do
-    content "A guy discovers that his..."
-    user 1
+    content { Faker::StarWars.quote}
   end
 end
