@@ -1,5 +1,5 @@
 class LoglinesController < ApplicationController
-	before_action :set_post, only: [:show, :edit, :update]
+	before_action :set_post, only: [:show, :edit, :update, :create]
 
 	def index
 		if params[:user_id]
@@ -19,7 +19,7 @@ class LoglinesController < ApplicationController
 	def create
 		@logline = Logline.new(logline_params)
 		if @logline.save
-			redirect_to logline_path(@logline), notice: "Successfully created a logline!"
+			redirect_to logline_path(@user, @logline), notice: "Successfully created a logline!"
 		else
 			flash[:error] = "Something went wrong!"
 		end

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 	
-	root to: 'pages#index'
+	root to: 'loglines#index'
 
   get '/about' => 'pages#about'
   get '/' => 'pages#index'
