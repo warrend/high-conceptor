@@ -1,15 +1,16 @@
 class LoglinesController < ApplicationController
-	before_action :set_post, only: [:show, :edit, :update, :create]
+	before_action :set_logline, only: [:show, :edit, :update, :create]
 
 	def index
 		if params[:user_id]
-      @loglines = User.find(params[:user_id]).loglines
+      @user = User.find(params[:user_id]).loglines
     else
 			@loglines = Logline.all
     end
 	end
 
 	def show
+		@logline = @user.loglines.find(params[:user_id])
 	end
 
 	def new
@@ -39,8 +40,8 @@ class LoglinesController < ApplicationController
   		params.require(:logline).permit(:content)
 		end
 
-		def set_post
-      @post = Logline.find(params[:id])
+		def set_logline
+      @logline = Logline.find_by_id(params[:id])
     end
 
 end

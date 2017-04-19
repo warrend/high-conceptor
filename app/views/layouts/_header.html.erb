@@ -4,7 +4,7 @@
 			<li><%= link_to 'Home', root_path %></li>
 			<% if logged_in? %>
 				<li><%= link_to 'Logout', logout_path %></li>
-				<li><%= link_to 'Add Logline', new_logline_path %></li>
+				<li><%= link_to 'Add Logline', new_user_logline_path(current_user) %></li>
 			<% else %>
 				<li><%= link_to 'Sign Up', signup_path %></li>
 				<li><%= link_to 'Login', login_path %></li>

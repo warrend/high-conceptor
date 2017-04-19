@@ -22,4 +22,7 @@ Rails.application.routes.draw do
     resources :loglines
   end 
 
+  resources :users
+  resources :loglines 
+
 end
