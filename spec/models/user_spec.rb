@@ -44,6 +44,7 @@ RSpec.describe User, type: :model do
   end
 
   describe "relationships" do 
+
     it "validates a logline factory" do 
       expect(build(:logline)).to be_valid
     end
@@ -61,10 +62,17 @@ RSpec.describe User, type: :model do
       expect(user.loglines.last.user).to eq(user) 
     end
 
-    it "has many ratings"
-      
+    it "has many ratings" do 
+      user = create(:user)
+      reviewer = create(:user)
+      logline = create(:logline)
+      user.loglines << logline 
+      user.save
+      rating = create(:rating, user: reviewer, logline: logline)
+      rating2 = create(:rating, user: reviewer, logline: logline)
+
+      expect(user.loglines.last.ratings.count).to eq(2)
     end
 
   end
-
 end
