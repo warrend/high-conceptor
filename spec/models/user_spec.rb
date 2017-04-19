@@ -1,53 +1,28 @@
 require "rails_helper"
 
-describe User do
-  it 'is valid with a first name, email, and password' do
-    user = User.new(name: 'LeBron', email: 'lebron@cleveland.com', password: "dunk1234")
-
-    expect(user).to be_valid
+RSpec.describe User, type: :model do
+  it "has a valid user factory with name, email, and password" do 
+    expect(build(:user)).to be_valid
   end
 
-  it 'is invalid without a name' do
-    user = User.new(email: 'lebron@cleveland.com', password: "dunk1234")
-
-    expect(user).to_not be_valid
+  it "is not valid without a name" do
+    expect(build(:user, name: nil)).to_not be_valid
   end
 
-  it 'is invalid without an email' do
-    user = User.new(name: 'LeBron', password: "12345")
-
-    expect(user).to_not be_valid
+  it "is not valid without an email" do
+    expect(build(:user, email: nil)).to_not be_valid
   end
 
-  it 'is invalid with a duplicate email' do
-    user = User.create(name: 'LeBron', email: 'lebron@cleveland.com', password: "12345")
-    user2 = User.create(name: 'Kyrie', email: 'lebron@cleveland.com', password: "12345")
-
-    expect(user2).to_not be_valid
+  it "is not valid without a password" do 
+    expect(build(:user, password: nil)).to_not be_valid
   end
 
-  describe 'associations' do
-    it 'has many loglines' do
-      user = User.create(name: 'LeBron', email: 'lebron@cleveland.com', password: "12345")
-      logline = Logline.create
-      logline2 = Logline.create
+  it "has a valid email address" do 
+    expect(build(:user, email: "dan.gmail.com")).to_not be_valid
+  end
 
-      user.loglines << logline
-      user.loglines << logline2
-
-      expect(user.loglines.size).to eq(2)
-    end
-
-    it 'has many ratings' do
-      user = User.create(name: 'LeBron', email: 'lebron@cleveland.com', password: "12345")
-      rating = Rating.create
-      rating2 = Rating.create
-
-      user.ratings << rating
-      user.ratings << rating2
-
-      expect(user.ratings.size).to eq(2)
-    end
+  it "has a password length of eight or longer" do 
+    expect(build(:user, password: "1234567")).to_not be_valid
   end
 
 end

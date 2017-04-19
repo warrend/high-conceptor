@@ -4,9 +4,11 @@ class User < ApplicationRecord
 
 	has_secure_password
 
-	validates_presence_of :name, :email, :password 
+	validates :name, :email, :password, presence: true
 	validates :email, uniqueness: true
+  validates_format_of  :email, :with => /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
 	validates_confirmation_of :password 
+  validates :password, length: { minimum: 8 }
 
 	def self.find_or_create_by_omniauth(auth_hash)
     self.where(:uid => auth_hash["uid"]).first_or_create do |user|

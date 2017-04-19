@@ -1,7 +1,9 @@
+require 'faker'
+
 FactoryGirl.define do
   factory :user do
-    name "LeBron"
-    email "lebron@gmail.com"
-    password_digest "12345678"
+    name { Faker::Name.name }
+    email { Faker::Internet.email}
+    password "12345678"
   end
 end
