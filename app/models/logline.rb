@@ -21,4 +21,8 @@ class Logline < ApplicationRecord
   	cats_array = cat.first.split
   end
 
+  def to_date
+  	self.created_at.strftime("%b %e, %l:%M %p") 
+  end
+
 end
