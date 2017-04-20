@@ -1,0 +1,5 @@
+<h1>Loglines under <%= @category.name %></h1>
+<% @category.loglines.each do |logline| %>
+	<%= logline.content %>
+	<%= logline.user.name %>
+<% end %>

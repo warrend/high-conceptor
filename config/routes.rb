@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 	
+  get 'categories/index'
+
+  get 'categories/show'
+
 	root to: 'loglines#index'
 
   get '/about' => 'pages#about'
@@ -24,5 +28,6 @@ Rails.application.routes.draw do
 
   resources :users
   resources :loglines 
+  resources :categories, only: [:show, :index]
 
 end

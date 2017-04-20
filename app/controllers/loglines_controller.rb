@@ -44,7 +44,7 @@ class LoglinesController < ApplicationController
 	private
 
 		def logline_params
-  		params.require(:logline).permit(:content)
+  		params.require(:logline).permit(:content, category_ids:[], categories_attributes: [:name])
 		end
 
 		def set_logline
