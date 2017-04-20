@@ -11,8 +11,12 @@ class LoglinesController < ApplicationController
 	end
 
 	def show
-		@user = User.find(params[:user_id])
-		@logline = @user.loglines.find_by_id(params[:id])
+		if params[:user_id]
+			@user = User.find(params[:user_id])
+			@logline = @user.loglines.find_by_id(params[:id])
+		else
+			@logline = Logline.find_by_id(params[:id])
+		end
 	end
 
 	def new

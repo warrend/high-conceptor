@@ -41,6 +41,14 @@ RSpec.describe User, type: :model do
       expect(user.password_digest).to_not eq(user.password)
     end
 
+    it "is valid without a bio" do 
+      expect(build(:user, bio: nil)).to be_valid
+    end
+
+    it "is invalid with a bio longer than 400 characters" do 
+
+    end
+
   end
 
   describe "relationships" do 

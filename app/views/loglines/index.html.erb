@@ -1,8 +1,8 @@
-<h1>Loglines</h1>
+<h1>Public Loglines</h1>
 <% @loglines.reverse.each do |logline| %>
 	<div>
 		<p><%= logline.content %></p>
-		<p>Written by: <%= link_to logline.user.name, user_path(logline.user) %></p>
+		<p>Written by: <%= link_to logline.user.name, user_loglines_path(logline.user) %></p>
 		<p><%= logline.created_at.strftime("%b %e, %l:%M %p") %></p>
 		<!-- # This is where the average rating should go -->
 		

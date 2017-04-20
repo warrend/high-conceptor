@@ -17,7 +17,6 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'bcrypt', '~> 3.1.7'
 
-gem "faker"
 gem "friendly_id"
 
 gem "omniauth"
@@ -39,6 +38,7 @@ group :development, :test do
   gem "pry"
   gem "guard-rspec", require: false
   gem "thin"
+  gem "faker"
 end
 
 group :development do

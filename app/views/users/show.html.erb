@@ -1,7 +1,7 @@
 <h1><%= @user.name %></h1>
 <% @user.loglines.reverse.each do |logline| %>
 	<div>
-		<p><%= logline.content %></p>
+		<p><%= logline.bio unless nil %></p>
 	</div><br>
 <% end %>
 
