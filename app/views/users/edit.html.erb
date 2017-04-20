@@ -1,0 +1,6 @@
+<h1>Update Your Bio</h1>
+<%= form_for(@user) do |f| %>
+  <%= f.text_area :bio %><br>
+  
+  <%= f.submit 'Save' %>
+<% end %>
