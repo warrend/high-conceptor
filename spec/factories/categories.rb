@@ -1,6 +1,7 @@
+require 'faker'
+
 FactoryGirl.define do
   factory :category do
-    id 1
-    name "TV"
+    name { Faker::Book.genre }
   end
 end

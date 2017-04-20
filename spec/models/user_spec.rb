@@ -97,6 +97,17 @@ RSpec.describe User, type: :model do
       expect(user.ratings.count).to eq(2)
     end
 
+    it "has loglines that have many ratings" do 
+      user = create(:user)
+      logline = create(:logline)
+      user.loglines << logline
+
+      rating1 = create(:rating, logline: logline)
+      rating2 = create(:rating, logline: logline)
+
+      expect(user.loglines.last.ratings.count).to eq(2)
+    end
+
   end
   
 end
