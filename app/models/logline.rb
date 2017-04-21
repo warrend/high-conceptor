@@ -35,10 +35,12 @@ class Logline < ApplicationRecord
     end
   end
 
+  def total_ratings
+    self.ratings.count
+  end
+
   def average_rating
-    total = self.ratings.reduce(0) { |sum, rating| sum + rating.rating }
-    binding.pry
-    total / self.ratings.count
+    self.ratings.inject(0) { |sum, rating| sum + rating.rating } / total_ratings
   end
 
 end
