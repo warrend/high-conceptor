@@ -1,29 +1,3 @@
 <h1>Loglines</h1>
-<% @loglines.reverse.each do |logline| %>
-	<div>
-		<p>----------------------------------------------------</p>
-		<p><%= logline.content %></p>
-		<p>Written by: <%= link_to logline.user.name, user_loglines_path(logline.user) %></p>
-		<p><%= logline.to_date %></p>
+<%= render partial: 'logline', collection: @loglines %>
 
-		<% if !logline.categories.empty? %>
-			<h2>Categories</h2>
-			<% logline.categories.each do |category| %>
-				<span><%= link_to category.name, category_path(category) %> </span>	
-			<% end %>
-		<% end %>
-
-	
-		<% if logline.users.exists?(current_user.id) %>
-			<p>Your Rating: <%= current_user_rating(logline) %></p>
-		<% else %>
-			<%= form_for(Rating.new, url: ratings_path(@rating), method: :post) do |f| %>
-				<input type="hidden" id="logline_id" name="rating[logline_id]" value=<%= "#{logline.id}" %> />
-				<%= f.text_field :rating %>
-				<%= f.submit 'Add Rating' %>
-			<% end %>		
-		<% end %>	
-		<p>Total Rating: <%= logline.total_ratings %></p>
-		<p>Average Rating: <%= logline.average_rating %></p>
-	<% end %>
-	</div>
