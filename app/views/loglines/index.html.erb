@@ -11,18 +11,10 @@
 				<span><%= link_to category.name, category_path(category) %> </span>	
 			<% end %>
 		<% end %>
-		<!-- # This is where the average rating should go -->
-	</div><br>
+	</div>
 	<% if logline.users.exists?(current_user.id) %>
-		<p>User has rated this logline!</p>
+		<p>Your Rating: <%= current_user_rating(logline) %></p>
 	<% else %>
-		<!--<#%= form_tag '/ratings', method: :post do  %>
-			<#%= hidden_field_tag(:logline_id, "#{logline.id}") %>
-			<#%= number_field(:rating, :rating, in: 1..100, step: 1) %> 
-
-			<#%= submit_tag 'Add rating' %>
-		<#% end %>-->
-
 		<%= form_for(Rating.new, url: ratings_path(@rating), method: :post) do |f| %>
 			<input type="hidden" id="logline_id" name="rating[logline_id]" value=<%= "#{logline.id}" %> />
 			<%= f.text_field :rating %>
