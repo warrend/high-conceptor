@@ -36,11 +36,15 @@ class Logline < ApplicationRecord
   end
 
   def total_ratings
-    self.ratings.count
+    self.ratings.count 
   end
 
   def average_rating
-    self.ratings.inject(0) { |sum, rating| sum + rating.rating } / total_ratings
+    if total_ratings > 0
+      self.ratings.inject(0) { |sum, rating| sum + rating.rating } / total_ratings
+    else
+      "No ratings yet."
+    end
   end
 
 end
