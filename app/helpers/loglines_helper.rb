@@ -1,3 +1,5 @@
 module LoglinesHelper
+
+
 	
 end

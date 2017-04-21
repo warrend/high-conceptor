@@ -12,12 +12,20 @@
 			<% end %>
 		<% end %>
 		<!-- # This is where the average rating should go -->
-		<% current_user.ratings.all.each do |rating| %>
-			<% if rating.logline_id == logline.id  %>
-				<p>You already rated this</p>
-				<p><%= rating.rating %></p>
-				<% end %>
-		<% end %>
-		
 	</div><br>
+	<% if logline.users.exists?(current_user.id) %>
+		<p>User has rated this logline!</p>
+	<% else %>
+		
+		
+			<%= form_tag '/ratings', method: :post do  %>
+				<%= hidden_field_tag(:logline_id, "#{logline.id}") %>
+				<%= hidden_field_tag(:user_id, "#{current_user.id}") %>
+				<%= text_field_tag(:rating) %> 
+				<%= submit_tag 'Add rating' %>
+			<% end %>
+	<% end %>	
+			
+		
 <% end %>
+

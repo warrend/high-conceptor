@@ -3,6 +3,7 @@ class Logline < ApplicationRecord
   has_many :ratings
   has_many :logline_categories
   has_many :categories, through: :logline_categories
+  has_many :users, through: :ratings
 
   validates :content, presence: true
   validates :content, length: { in: 3..225 }

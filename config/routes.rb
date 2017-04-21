@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-	
+
   get 'categories/index'
 
   get 'categories/show'
@@ -29,5 +29,6 @@ Rails.application.routes.draw do
   resources :users
   resources :loglines 
   resources :categories, only: [:show, :index]
+  resources :ratings
 
 end
