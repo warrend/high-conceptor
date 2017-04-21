@@ -25,4 +25,13 @@ class Logline < ApplicationRecord
   	self.created_at.strftime("%b %e, %l:%M %p") 
   end
 
+  def user_included_in_ratings
+    if rating = self.ratings.all.where("user_id like ?", current_user)
+      binding.pry
+      rating.last.rating
+    else
+      nil
+    end
+  end
+
 end

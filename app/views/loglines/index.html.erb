@@ -1,6 +1,7 @@
 <h1>Loglines</h1>
 <% @loglines.reverse.each do |logline| %>
 	<div>
+		<p>----------------------------------------------------</p>
 		<p><%= logline.content %></p>
 		<p>Written by: <%= link_to logline.user.name, user_loglines_path(logline.user) %></p>
 		<p><%= logline.to_date %></p>
@@ -11,6 +12,12 @@
 			<% end %>
 		<% end %>
 		<!-- # This is where the average rating should go -->
+		<% current_user.ratings.all.each do |rating| %>
+			<% if rating.logline_id == logline.id  %>
+				<p>You already rated this</p>
+				<p><%= rating.rating %></p>
+				<% end %>
+		<% end %>
 		
 	</div><br>
 <% end %>

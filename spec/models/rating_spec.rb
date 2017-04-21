@@ -9,17 +9,23 @@ RSpec.describe Rating, type: :model do
   end
 
   describe "validations" do 
-  	it "has a number between one and 100"
+  	it "has a number between one and 100" do 
+  		expect(build(:rating, rating: 100)).to be_valid
+  	end
 
-  	it "is invalid with anything other than a number"
+  	it "is invalid with anything other than a number" do 
+  		expect(build(:rating, rating: "Ten")).to_not be_valid
+  	end
 
   end
 
   describe "relationships" do 
-  	it "has many loglines"
+  	it "has many loglines" do
+
+  	end
   end
 
   describe "instance methods" do 
-  	it "average_rating gives the average rating for a logline"
+  	it "#average_rating gives the average rating for a logline"
   end
 end
