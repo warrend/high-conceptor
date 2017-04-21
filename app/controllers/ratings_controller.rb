@@ -4,7 +4,7 @@ class RatingsController < ApplicationController
   end
 
   def create
-  	@rating = Rating.new(rating_params)
+  	@rating = current_user.ratings.build(logline_id: params[:rating][:logline_id], rating: params[:rating][:rating])
 		if @rating.save
     	redirect_to loglines_path, notice: "Successfully added a rating."
     else
