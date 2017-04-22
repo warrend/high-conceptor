@@ -1,13 +1,1 @@
-<h1><%= @user.name %>'s Profile</h1>
-<% if @user.bio %>
-	<p><%= @user.bio %></p>
-	<p><%= link_to 'Edit Bio', edit_user_path(@user) %></p>
-<% else %>
-	<p>You don't have a bio yet!</p>
-	<p><%= link_to 'Add Bio', edit_user_path(@user) %></p>
-<% end %>
-
-<%= link_to 'Check out loglines', user_loglines_path(@user) %>
-
-<p><%= link_to "Log Out", logout_path if current_user %></p>
-<%= link_to "Back to Public Loglines", root_path %>
+<%= render 'users/show', user: @user %>

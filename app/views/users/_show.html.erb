@@ -1,0 +1,11 @@
+<%= content_tag(:h1, "#{user.name}'s Profile") %>
+<% if user.bio %>
+	<%= content_tag(:p, user.bio) %>
+	<%= content_tag(:p, link_to('Edit Bio', edit_user_path(user))) %>
+<% else %>
+	<%= content_tag :p, "You don't have a bio yet!" %>
+	<%= link_to 'Add Bio', edit_user_path(@user) %>
+<% end %>
+
+<%= link_to 'Check out loglines', user_loglines_path(user) %>
+<%= link_to "Back to Public Loglines", root_path %>
