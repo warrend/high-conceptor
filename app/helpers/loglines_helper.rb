@@ -5,14 +5,13 @@ module LoglinesHelper
 		logline.last.rating
 	end
 
-	# def display_categories
-	# 	if !logline.category.empty?
-	# 		content_tag(:h1, "Categories")
-	# 		logline.categories.each do |category|
-	# 			link_to(content_tag(:span, category.name, category_path(category)))
-	# 		end
-	# 	end
-	# end
+	def has_categories?(logline)
+		!logline.categories.empty?
+	end
+
+	def already_rated?(logline, user)
+		logline.users.exists?(user)
+	end
 
 end
 

@@ -1,17 +1,17 @@
 <div>
-	<p>----------------------------------------------------</p>
+	<p>--------</p>
+	
 	<p>Written by: <%= link_to logline.user.name, user_loglines_path(logline.user) %></p>
 	<%= render 'shared/logline_details', logline: logline %>
 
-	<% if !logline.categories.empty? %>
+	<% if has_categories?(logline) %>
 		<h2>Categories</h2>
 		<% logline.categories.each do |category| %>
 			<span><%= link_to category.name, category_path(category) %> </span>	
 		<% end %>
 	<% end %>
 
-
-	<% if logline.users.exists?(current_user.id) %>
+	<% if already_rated?(logline, current_user.id) %>
 		<p>Your Rating: <%= current_user_rating(logline) %></p>
 	<% else %>
 		<%= render 'loglines/rating_form', logline: logline %>
