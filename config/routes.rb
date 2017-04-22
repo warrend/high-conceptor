@@ -14,9 +14,7 @@ Rails.application.routes.draw do
   get 'auth/github', as: :github_auth
   match 'auth/:provider/callback' => 'sessions#create', via: [:get, :post]
 
-  # Create New User
-	get '/signup' => 'users#new'
-  post '/users' => 'users#create'
+  
 
   resources :users do
     resources :loglines
@@ -27,4 +25,7 @@ Rails.application.routes.draw do
   resources :categories, only: [:show, :index]
   resources :ratings
 
+# Create New User
+  #get '/signup' => 'users#new'
+  #post '/users' => 'users#create'
 end

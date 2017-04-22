@@ -1,7 +1,7 @@
 <%= form_for logline do |f| %>
-  <%= f.text_area :content, placeholder: 'Write your logline here...' %><br>
+  <%= f.text_area :content, placeholder: 'Write your logline here...', size: "50x10" %><br>
   <%= f.fields_for :categories, logline.categories.build do |categories_fields| %>
-    	<%= categories_fields.text_field :name %><br>
+    	<%= categories_fields.text_field :name, placeholder: "eg: tv drama procedural" %><br>
   	<% end %>
   <%= f.submit %><br>
 <% end %>

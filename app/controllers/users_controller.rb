@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-	before_action :authorize!
 	
+
   def new
   	@user = User.new
   end
@@ -10,12 +10,13 @@ class UsersController < ApplicationController
 	end
 
 	def create
-	  user = User.new(user_params)
-	  if user.save
-	    session[:user_id] = user.id
-	    redirect_to root_path
+	  @user = User.new(user_params)
+	  if @user.save
+	    session[:user_id] = @user.id
+	    redirect_to loglines_path
 	  else
-	    redirect_to signup_path
+	  	flash[:error] = @user.errors.full_messages.join(" | ")
+	    render 'new'
 	  end
 	end
 
