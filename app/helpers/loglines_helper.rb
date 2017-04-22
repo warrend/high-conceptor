@@ -5,4 +5,15 @@ module LoglinesHelper
 		logline.last.rating
 	end
 
+	# def display_categories
+	# 	if !logline.category.empty?
+	# 		content_tag(:h1, "Categories")
+	# 		logline.categories.each do |category|
+	# 			link_to(content_tag(:span, category.name, category_path(category)))
+	# 		end
+	# 	end
+	# end
+
 end
+
+

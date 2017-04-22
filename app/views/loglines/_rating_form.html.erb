@@ -1,0 +1,5 @@
+<%= form_for(Rating.new, url: ratings_path(@rating), method: :post) do |f| %>
+	<input type="hidden" id="logline_id" name="rating[logline_id]" value=<%= "#{logline.id}" %> />
+	<%= f.text_field :rating %>
+	<%= f.submit 'Add Rating' %>
+<% end %>		
