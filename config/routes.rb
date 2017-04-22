@@ -1,10 +1,6 @@
 Rails.application.routes.draw do
 
-  get 'categories/index'
-
-  get 'categories/show'
-
-	root to: 'loglines#index'
+	root to: 'pages#index'
 
   get '/about' => 'pages#about'
   get '/' => 'pages#index'
