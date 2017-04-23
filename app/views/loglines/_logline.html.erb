@@ -11,10 +11,12 @@
 		<% end %>
 	<% end %>
 
-	<% if already_rated?(logline, current_user.id) %>
-		<p>Your Rating: <%= current_user_rating(logline) %></p>
-	<% else %>
-		<%= render 'loglines/rating_form', logline: logline %>
-	<% end %>	
+	<% if current_user.id != logline.user_id %>
+		<% if already_rated?(logline, current_user.id) %>
+			<p>Your Rating: <%= current_user_rating(logline) %></p>
+		<% else %>
+			<%= render 'loglines/rating_form', logline: logline %>
+		<% end %>
+	<% end %>
 	
 </div>
