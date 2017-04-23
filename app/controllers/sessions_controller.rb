@@ -1,6 +1,12 @@
 class SessionsController < ApplicationController
   skip_before_action :verify_authenticity_token, only: :create 
 
+  def new
+    if logged_in?
+      redirect_to loglines_path
+    end
+  end
+
   def create
     if auth_hash = request.env["omniauth.auth"]
       @user = User.find_or_create_by_omniauth(auth_hash)

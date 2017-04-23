@@ -1,8 +1,12 @@
 class UsersController < ApplicationController
-	
+	before_action :authorize!, only: [:show, :index, :edit]
 
   def new
-  	@user = User.new
+  	if logged_in?
+  		redirect_to loglines_path
+  	else
+  		@user = User.new
+  	end
   end
 
 	def show
@@ -16,7 +20,7 @@ class UsersController < ApplicationController
 	    redirect_to loglines_path
 	  else
 	  	flash[:error] = @user.errors.full_messages.join(" | ")
-	    render 'new'
+	    redirect_to new_user_path
 	  end
 	end
 
