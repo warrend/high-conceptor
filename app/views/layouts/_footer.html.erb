@@ -1,0 +1,9 @@
+<footer>
+	<div class="container">
+		<div class="nav-left nav-menu">
+			<li class="nav-item"><%= link_to "#{current_user.name}'s Profile", user_path(current_user) %></li>
+			<li class="nav-item"><%= link_to 'Add Logline', new_user_logline_path(current_user) %></li>
+			<li class="nav-item"><%= link_to 'Logout', logout_path %></li>
+		</div>
+	</div>
+</footer>
