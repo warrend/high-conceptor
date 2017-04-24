@@ -15,6 +15,9 @@ class Logline < ApplicationRecord
     end
   end
 
+  scope :highest_rated, -> { where('average_rating > ?', 0) }
+  # order(average_rating: :desc)
+
   def split_categories(hash)
   	c = hash.flatten
   	c = c.last

@@ -1,2 +1,11 @@
+<%= content_tag :h1, "Highest Rated Loglines" %><br>
+<% @highest_rated.each do |logline| %>
+	<%= content_tag :p, "By: #{logline.user.name}" %>
+	<%= render partial: 'shared/logline_details', locals: {logline: logline} %>
+	<br>
+<% end %>
+
+<p>-----------</p>
+
 <%= content_tag :h1, "Recent Ratings" %>
 <%= render partial: 'ratings/rating', collection: @recent_ratings %>
