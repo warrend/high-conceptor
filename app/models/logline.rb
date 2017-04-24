@@ -26,16 +26,16 @@ class Logline < ApplicationRecord
   	self.created_at.strftime("%b %e, %l:%M %p") 
   end
 
-  def total_ratings
-    self.ratings.count 
-  end
+  # def total_ratings
+  #   self.ratings.count 
+  # end
 
-  def average_rating
-    if total_ratings > 0
-      self.ratings.inject(0) { |sum, rating| sum + rating.rating } / total_ratings
-    else
-      "No ratings yet."
-    end
-  end
+  # def ave_rating
+  #   if total_ratings > 0
+  #     self.ratings.inject(0) { |sum, rating| sum + rating.rating } / total_ratings
+  #   else
+  #     "No ratings yet."
+  #   end
+  # end
 
 end

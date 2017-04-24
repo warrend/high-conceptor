@@ -6,4 +6,17 @@ class Rating < ApplicationRecord
 
   scope :recent_ratings, -> (limit) { order("created_at desc").limit(limit) }
 
+  after_save :update_ratings_average
+
+  def update_ratings_average
+  	logline = self.logline
+  	logline.average_rating = logline.ratings.inject(0) { |sum, rating| sum + rating.rating } / total_ratings
+  	logline.save
+  end
+
+  def total_ratings
+    logline = self.logline
+    logline.ratings.count
+  end
+
 end
