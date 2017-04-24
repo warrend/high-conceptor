@@ -2,4 +2,4 @@
 <br>
 <%= content_tag :p, "Created at #{logline.to_date}" %>
 <%= content_tag :p, "Total Rating: #{logline.ratings.count}" %>
-<%= content_tag :p, "Average Rating: #{logline.average_rating}" %>
+<%= content_tag :p, "Average Rating: #{average_rating?(logline)}" %>

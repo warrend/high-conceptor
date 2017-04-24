@@ -13,6 +13,10 @@ module LoglinesHelper
 		logline.users.exists?(user)
 	end
 
+	def average_rating?(logline)
+		logline.average_rating || "No ratings yet!"
+	end
+
 end
 
 
