@@ -5,9 +5,9 @@ class LoglinesController < ApplicationController
 	def index
 		if params[:user_id]
       @user = User.find(params[:user_id])
-			@loglines = @user.loglines
+			@loglines = @user.loglines.reverse
     else
-			@loglines = Logline.all
+			@loglines = Logline.all.reverse
     end
 	end
 
