@@ -3,7 +3,7 @@ class RatingsController < ApplicationController
 
   def index
     @recent_ratings = Rating.recent_ratings(5)
-    @highest_rated = Logline.highest_rated.order(average_rating: :desc)
+    @highest_rated = Logline.highest_rated
   end
 
   def new
