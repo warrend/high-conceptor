@@ -11,6 +11,10 @@ class LoglinesController < ApplicationController
     end
 	end
 
+	def new
+		@logline = Logline.new
+	end
+
 	def show
 		if params[:user_id]
 			@user = User.find(params[:user_id])
@@ -20,17 +24,13 @@ class LoglinesController < ApplicationController
 		end
 	end
 
-	def new
-		@logline = Logline.new
-	end
-
 	def create
 		@user = current_user
 		@logline = @user.loglines.new(logline_params)
 		if @logline.save
 			redirect_to user_logline_path(@user, @logline), notice: "Successfully created a logline!"
 		else
-			flash[:error] = "Something went wrong!"
+			render :new
 		end
 	end
 
