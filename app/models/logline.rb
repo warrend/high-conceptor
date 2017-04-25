@@ -9,9 +9,11 @@ class Logline < ApplicationRecord
   validates :content, length: { in: 3..225 }
 
   def categories_attributes=(category_attributes)
-    split_categories(category_attributes).each do |category_attribute|
-      category = Category.find_or_create_by(name: category_attribute)
-      self.categories << category
+    if self.save  
+      split_categories(category_attributes).each do |category_attribute|
+        category = Category.find_or_create_by(name: category_attribute)
+        self.categories << category
+      end
     end
   end
 
