@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-	before_action :authorize!, only: [:show, :index, :edit]
+	before_action :authorize!, only: [:index, :edit]
 
   def new
   	if logged_in?

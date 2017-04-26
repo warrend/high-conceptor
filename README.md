@@ -15,7 +15,7 @@ Clone the repository, then execute:
   $ cd high-conceptor
   $ bundle
   $ rails s
-
+  
   ```
 
 ## Usage
