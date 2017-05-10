@@ -1,6 +1,11 @@
 class UsersController < ApplicationController
 	before_action :authorize!, only: [:index, :edit]
 
+ 	def index
+ 		@users = User.most_loglines
+ 	end
+
+
   def new
   	if logged_in?
   		redirect_to loglines_path
@@ -20,7 +25,7 @@ class UsersController < ApplicationController
 	    redirect_to loglines_path
 	  else
 	  	flash[:error] = @user.errors.full_messages.join(" | ")
-	    redirect_to new_user_path
+	    render new_user_path
 	  end
 	end
 

@@ -12,6 +12,8 @@ class User < ApplicationRecord
 	validates_confirmation_of :password 
   # validates :password, length: { minimum: 8 }
 
+  after_save :update_logline_count
+
 	def self.find_or_create_by_omniauth(auth_hash)
     self.where(:uid => auth_hash["uid"]).first_or_create do |user|
       user.name = auth_hash["info"]["name"]
@@ -20,5 +22,16 @@ class User < ApplicationRecord
       user.password_confirmation = user.password
       user.save!
     end
+  end
+ 
+  scope :most_loglines, -> { where('logline_count > ?', 0).order(logline_count: :desc) }
+
+  # def logline_total
+  #   self.loglines.count
+  # end
+
+  def update_logline_count
+    self.logline_count = self.loglines.count
+    self.save
   end
 end

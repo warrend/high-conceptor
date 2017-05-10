@@ -8,6 +8,8 @@ class Logline < ApplicationRecord
   validates :content, presence: true
   validates :content, length: { in: 3..225 }
 
+  after_save :update_logline_count
+
   def categories_attributes=(category_attributes)
     if self.save  
       split_categories(category_attributes).each do |category_attribute|
@@ -28,6 +30,12 @@ class Logline < ApplicationRecord
 
   def to_date
   	self.created_at.strftime("%b %e, %l:%M %p") 
+  end
+
+  def update_logline_count
+    user = @current_user
+    user.logline_count =+ 1
+    user.save
   end
 
 end
