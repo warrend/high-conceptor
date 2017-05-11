@@ -18,7 +18,7 @@ end
 50.times do 
 	Logline.create(
 		content: Faker::StarWars.quote,
-		user_id: Faker::Number.between(5, 20)
+		user_id: Faker::Number.between(1, 20)
 	)
 end
 

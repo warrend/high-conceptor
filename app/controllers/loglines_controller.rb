@@ -28,6 +28,8 @@ class LoglinesController < ApplicationController
 		@user = current_user
 		@logline = @user.loglines.new(logline_params)
 		if @logline.save
+			@user.logline_count += 1
+			@user.save
 			redirect_to user_logline_path(@user, @logline), notice: "Successfully created a logline!"
 		else
 			render :new
