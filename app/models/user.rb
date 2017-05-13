@@ -24,13 +24,14 @@ class User < ApplicationRecord
     end
   end
  
-  scope :most_loglines, -> { where('logline_count > ?', 0).order(logline_count: :desc) }
+  # scope :most_loglines, -> { where('logline_count > ?', 0).order(logline_count: :desc) }
 
-  private
+  def self.most_loglines
+    joins(:loglines).group("loglines.user_id").order("count (*) desc")
+  end
 
-  def update_logline_count
-    self.logline_count += 1
-    self.save
+  def total_loglines
+    self.loglines.count
   end
 
 end
