@@ -11,8 +11,9 @@
   <body class="<%= 'container' unless current_page?('/') %>">
   	<%= render 'layouts/header' %>
   	<%= render 'layouts/messages' %>
-    
-    <%= yield %>
+    <div id="content">
+      <%= yield %>
+    </div>
     
     <%= render 'layouts/footer' if logged_in? %>
   </body>

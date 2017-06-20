@@ -1,3 +1,19 @@
 <h1>Loglines</h1>
 <%= render partial: 'logline', collection: @loglines %>
 
+<script id="show-template" type="text/x-handlebars-template">
+	<h1>{{name}}'s Profile</h1>
+
+	<p>{{bio}}</p>
+
+	<ul>
+	{{#each logline}}
+		<li>{{this.content}}</li>
+		<li>{{this.average_rating}}</li>
+	{{/each}}
+	</ul>
+
+	<p><a href="/users/2/loglines">Check out loglines</a></p>
+	<a href="/">Back to Public Loglines</a>
+</script>
+
