@@ -22,11 +22,11 @@ const bindClickHandlers = function(){
 	$('.user-show').on('click', function(e){
 		e.preventDefault();
 		$.get(this.href).success(function(response){
-			var user = new User(response);
-			var showPage = User.template(user);
+			// var user = new User(response);
+			// var showPage = User.template(user);
 			
-			$('#content').html(showPage);
-			//console.log(response)
+			// $('#content').html(showPage);
+			console.log(response)
 		})
 	})
 }
