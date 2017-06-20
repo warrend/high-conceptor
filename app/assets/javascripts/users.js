@@ -1,6 +1,9 @@
 function User(attr){
 	this.name = attr.name
+	this.id = attr.id
 	this.bio = attr.bio
+	this.averageRating = attr.average_rating
+	this.loglines = attr.loglines
 	//this.averageRating = attr.average_rating
 }
 
@@ -20,8 +23,9 @@ const bindClickHandlers = function(){
 		e.preventDefault();
 		$.get(this.href).success(function(response){
 			var user = new User(response);
-			var showPage = User.template(user) 
-			$('#content').html(showPage)
+			var showPage = User.template(user);
+			
+			$('#content').html(showPage);
 			//console.log(response)
 		})
 	})

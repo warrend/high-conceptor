@@ -2,16 +2,33 @@
 <%= render partial: 'logline', collection: @loglines %>
 
 <script id="show-template" type="text/x-handlebars-template">
-	<h1>{{name}}'s Profile</h1>
-
+	<h1><strong>{{name}}'s Profile</strong></h1>
+	<br>
 	<p>{{bio}}</p>
-
 	<ul>
-	{{#each logline}}
-		<li>{{this.content}}</li>
-		<li>{{average_rating}}</li>
+  {{#each loglines}}
+	  <li>{{content}}</li>
+	  {{#if averageRating}}
+	  	<li>{{averageRating}}</li>
+		{{/if}}
+		<% if current_user.id != @logline.user_id %>
+			<% if already_rated?(@logline, current_user.id) %>
+				<p>Your Rating: <%= current_user_rating(@logline) %></p>
+			<% else %>
+				<form class="new_rating" id="new_rating" action="/ratings" accept-charset="UTF-8" method="post">
+					<input name="utf8" type="hidden" value="✓">
+					<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+					<input type="hidden" id="logline_id" name="rating[logline_id]" value="{{id}}">
+					<input type="text" name="rating[rating]" id="rating_rating">
+					<input type="submit" name="commit" value="Add Rating" data-disable-with="Add Rating">
+				</form>
+			<% end %>
+		<% end %>
+			
+		<br>
 	{{/each}}
 	</ul>
+
 
 	<p><a href="/users/2/loglines">Check out loglines</a></p>
 	<a href="/">Back to Public Loglines</a>
