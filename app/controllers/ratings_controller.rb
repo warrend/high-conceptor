@@ -8,6 +8,7 @@ class RatingsController < ApplicationController
 
   def new
   	@rating = Rating.new
+    render :json => @rating
   end
 
   def create

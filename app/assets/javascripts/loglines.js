@@ -2,6 +2,8 @@ $(function(){
 	bindClickHandlers();
 	User.templateSource = $('#show-template').html();
 	User.template = Handlebars.compile(User.templateSource);
+	var templateFormSource = $('#form-template').html();
+	var formTemplate = Handlebars.compile(templateFormSource);
 })
 
 function User(attr){
@@ -30,5 +32,10 @@ const bindClickHandlers = function(){
 			console.log(response)
 		})
 	})
+
+	$(document).on('click', '.button', function(e){
+		$('.rate-form').html("This is where the form will live.")
+	})
+
 }
 
