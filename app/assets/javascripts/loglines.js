@@ -6,6 +6,7 @@ $(function(){
 
 function User(attr){
 	this.name = attr.name
+	this.email = attr.email
 	this.id = attr.id
 	this.bio = attr.bio
 	this.averageRating = attr.average_rating

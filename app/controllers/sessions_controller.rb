@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
 
   def new
     if logged_in?
-      redirect_to loglines_path
+      redirect_to root_path
     end
   end
 
