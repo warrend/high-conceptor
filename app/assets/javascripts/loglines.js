@@ -25,7 +25,7 @@ const bindClickHandlers = function(){
 		$.get(this.href).done(function(response){
 			var user = new User(response);
 			var showPage = User.template(user);
-			
+			history.pushState(null, null, "users/" + response.id)
 			$('#content').html(showPage);
 			console.log(response)
 		})

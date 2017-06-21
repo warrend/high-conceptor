@@ -2,12 +2,13 @@
 <%= render partial: 'logline', collection: @loglines %>
 
 <script id="show-template" type="text/x-handlebars-template">
+
 	<h1><strong>{{name}}'s Profile</strong></h1>
 	<br>
 	<p>{{bio}}</p>
 	<ul>
   {{#each loglines}}
-	  <div class="box">
+	  <div class="box" data-id="{{id}}">
 		  <article class="media">
 		    <div class="media-left">
 		      <figure class="image is-64x64">
@@ -21,7 +22,11 @@
 		          <br>
 		          {{content}}
 		        </p>
-		        <a href="#" class="button">Rate!</a>
+		        
+						<div class="rate-form">
+							<a href="#" class="button">Rate!</a>
+						</div>
+
 		      </div>
 		    </div>
 		  </article>
@@ -32,6 +37,8 @@
 
 	<a href="/">Back to Public Loglines</a>
 </script>
+
+
 
 
 
