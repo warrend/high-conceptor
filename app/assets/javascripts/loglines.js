@@ -39,5 +39,12 @@ const bindClickHandlers = function(){
 		$(this).parent().html(formTemplate({id: loglineId}))
 	})
 
+	$(document).on('submit', '#new_rating', function(e){
+		e.preventDefault(e)
+		$.post(this.action, $(this).serialize()).done(function(data){
+			$('.rate-form-' + data.logline_id).html("Your rating: " + data.rating)			
+		})
+	})
+
 }
 
