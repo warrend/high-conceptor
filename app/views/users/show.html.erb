@@ -1,1 +1,44 @@
-<%= render 'users/show', user: @user %>
+<h1>User Show Page!</h1>
+<script id="show-template" type="text/x-handlebars-template">
+	<h1><strong>{{name}}'s Profile</strong></h1>
+	<br>
+	<p>{{bio}}</p>
+	<ul>
+  {{#each loglines}}
+	  <div class="box">
+  <article class="media">
+    <div class="media-left">
+      <figure class="image is-64x64">
+        <img src="http://bulma.io/images/placeholders/128x128.png" alt="Image">
+      </figure>
+    </div>
+    <div class="media-content">
+      <div class="content">
+        <p>
+          <strong>{{../name}}</strong> <small>{{../this.email}}</small>
+          <br>
+          {{content}}
+        </p>
+      </div>
+      <nav class="level is-mobile">
+        <div class="level-left">
+          <a class="level-item">
+            <span class="icon is-small"><i class="fa fa-reply"></i></span>
+          </a>
+          <a class="level-item">
+            <span class="icon is-small"><i class="fa fa-retweet"></i></span>
+          </a>
+          <a class="level-item">
+            <span class="icon is-small"><i class="fa fa-heart"></i></span>
+          </a>
+        </div>
+      </nav>
+    </div>
+  </article>
+</div>
+	{{/each}}
+	</ul>
+
+
+	<a href="/">Back to Public Loglines</a>
+</script>

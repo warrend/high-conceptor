@@ -7,26 +7,44 @@
 	<p>{{bio}}</p>
 	<ul>
   {{#each loglines}}
-	  <li>{{content}}</li>
-	  {{#if averageRating}}
-	  	<li>{{averageRating}}</li>
-		{{/if}}
-		
-				<form class="new_rating" id="new_rating" action="/ratings" accept-charset="UTF-8" method="post">
-					<input name="utf8" type="hidden" value="✓">
-					<%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-					<input type="hidden" id="logline_id" name="rating[logline_id]" value="{{id}}">
-					<input type="text" name="rating[rating]" id="rating_rating">
-					<input type="submit" name="commit" value="Add Rating" data-disable-with="Add Rating">
-				</form>
-			
-			
-		<br>
+	  <div class="box">
+  <article class="media">
+    <div class="media-left">
+      <figure class="image is-64x64">
+        <img src="http://bulma.io/images/placeholders/128x128.png" alt="Image">
+      </figure>
+    </div>
+    <div class="media-content">
+      <div class="content">
+        <p>
+          <strong>{{../name}}</strong> <small>{{../email}}</small>
+          <br>
+          {{content}}
+        </p>
+      </div>
+      <nav class="level is-mobile">
+        <div class="level-left">
+          <a class="level-item">
+            <span class="icon is-small"><i class="fa fa-reply"></i></span>
+          </a>
+          <a class="level-item">
+            <span class="icon is-small"><i class="fa fa-retweet"></i></span>
+          </a>
+          <a class="level-item">
+            <span class="icon is-small"><i class="fa fa-heart"></i></span>
+          </a>
+        </div>
+      </nav>
+    </div>
+  </article>
+</div>
 	{{/each}}
 	</ul>
 
 
-	<p><a href="/users/2/loglines">Check out loglines</a></p>
 	<a href="/">Back to Public Loglines</a>
 </script>
+
+
+
 
