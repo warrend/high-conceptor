@@ -23,7 +23,6 @@ class LoglinesController < ApplicationController
 		else
 			@logline = Logline.find_by_id(params[:id])
 		end
-
 	end
 
 	def create

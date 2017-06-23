@@ -14,26 +14,25 @@ function User(attr){
 	//this.averageRating = attr.average_rating
 }
 
-
-// User.prototype.renderShow = function(){
-// 	return User.template(this)
-// }
+User.prototype.renderShow = function(){
+	return User.template(this)
+}
 
 const bindClickHandlers = function(){
+	var templateFormSource = $('#form-template').html();
+	var formTemplate = Handlebars.compile(templateFormSource);
 
 	$('.user-show').on('click', function(e){
 		e.preventDefault();
 		$.get(this.href).done(function(response){
 			var user = new User(response);
-			var showPage = User.template(user);
+			var showPage = user.renderShow();
+
 			history.pushState(null, null, "users/" + response.id)
 			$('#content').html(showPage);
 			console.log(response)
 		})
 	})
-
-	var templateFormSource = $('#form-template').html();
-	var formTemplate = Handlebars.compile(templateFormSource);
 
 	$(document).on('click', '.button', function(e){
 		var loglineId = $(this).parent().data("id")
