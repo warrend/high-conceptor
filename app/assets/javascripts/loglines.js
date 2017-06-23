@@ -45,14 +45,20 @@ const bindClickHandlers = function(){
 			$('.rate-form-' + data.logline_id).html("Your rating: " + data.rating + "/100")			
 		})
 	})
+
+	$(document).on('click', '#next', function(e){
+		e.preventDefault()
+		var userId = parseInt($(this).parent().data("user-id")) + 1
+		$.get('/users/' + userId).done(function(response){
+			var user = new User(response);
+			var showPage = user.renderShow();
+
+			history.pushState(null, null, "users/" + response.id)
+			$('#content').html(showPage);
+		})
+	})
 }
 
-$(document).on('click', '.logline-show', function(e){
-	e.preventDefault()
-	var dataId = parseInt($(this).data("logline-id")) + 1;
-	$.get('/loglines/' + dataId).done(function(response){
-		console.log(response)
-	})
-})
+
 
 
