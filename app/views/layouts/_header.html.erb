@@ -10,7 +10,6 @@
 			<% if logged_in? %>
 				<li class="nav-item"><%= link_to "#{current_user.name}'s Profile", user_path(current_user) %></li>
 				<li class="nav-item"><%= link_to 'Add Logline', new_user_logline_path(current_user) %></li>
-				<li class="nav-item"><%= link_to 'Users', users_path %></li>
 				<li class="nav-item"><%= link_to 'Top Ratings', ratings_path %></li>
 				<li class="nav-item"><%= link_to 'Logout', logout_path %></li>
 			<% else %>
