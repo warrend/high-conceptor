@@ -25,12 +25,12 @@ const bindClickHandlers = function(){
 	$('.user-show').on('click', function(e){
 		e.preventDefault();
 		$.get(this.href).done(function(response){
-			var user = new User(response);
+			var user = new User(response[0]);
 			var showPage = user.renderShow();
 
 			history.pushState(null, null, "users/" + response.id)
 			$('#content').html(showPage);
-			console.log(response)
+			console.log(response[1])
 		})
 	})
 
@@ -52,7 +52,7 @@ const bindClickHandlers = function(){
 
 		$.get('/users/' + userId).done(function(response){
 			history.pushState(null, null, "/users/" + response.id)
-			var user = new User(response);
+			var user = new User(response[0]);
 			var showPage = user.renderShow();
 			$('#content').html(showPage);
 		}).fail(function(){

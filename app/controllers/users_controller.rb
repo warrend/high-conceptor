@@ -15,9 +15,10 @@ class UsersController < ApplicationController
   end
 
 	def show
+		@current_user = current_user
 		@user = User.find_by_id(params[:id])
 		@next_post = @user.next
-		render :json => @next_post
+		render :json => [@next_post, @current_user]
 	end
 
 	def create
