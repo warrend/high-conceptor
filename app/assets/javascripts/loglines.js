@@ -49,12 +49,14 @@ const bindClickHandlers = function(){
 	$(document).on('click', '#next', function(e){
 		e.preventDefault()
 		var userId = parseInt($(this).parent().data("user-id")) + 1
+
 		$.get('/users/' + userId).done(function(response){
+			history.pushState(null, null, "/users/" + response.id)
 			var user = new User(response);
 			var showPage = user.renderShow();
-
-			history.pushState(null, null, "users/" + response.id)
 			$('#content').html(showPage);
+		}).fail(function(){
+			console.log("This user doesn't exist.")
 		})
 	})
 }

@@ -34,4 +34,8 @@ class User < ApplicationRecord
     self.loglines.count
   end
 
+  def next
+    User.where("id > ?", id).first
+  end
+
 end
