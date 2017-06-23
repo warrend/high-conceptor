@@ -22,21 +22,29 @@
 		          <br>
 		          {{content}}
 		        </p>
-		        
+		       
 						<div class="rate-form-{{id}}" data-id="{{id}}">
 							<button class="button">Rate!</button>
 						</div>
-
+	
 		      </div>
 		    </div>
 		  </article>
 		</div>
 	{{/each}}
 	</ul>
-
-
 	<a href="/">Back to Public Loglines</a>
 </script>
+
+<!-- 
+<#% if current_user.id != logline.user_id %>
+		<#% if already_rated?(logline, current_user.id) %>
+			<p>Your Rating: <#%= current_user_rating(logline) %></p>
+		<#% else %>
+			<#%= render 'loglines/rating_form', logline: logline %>
+		<#% end %>
+	<#% end %>
+-->
 
 <script id="form-template" type="text/x-handlebars-template">
 	<form class="new_rating" id="new_rating" action="/ratings" accept-charset="UTF-8" method="post">

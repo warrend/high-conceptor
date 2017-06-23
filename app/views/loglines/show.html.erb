@@ -1,3 +1,6 @@
-<p>Written by: <%= link_to @logline.user.name, user_path(@logline.user) %></p>
+<div class="logline-show" data-logline-id="<%= @logline.id %>">
+	<p>Written by: <%= link_to @logline.user.name, user_path(@logline.user) %></p>
+	<%= render 'shared/logline_details', logline: @logline %>
+	<a href="" class="button next">Next...</a>
+</div>
 
-<%= render 'shared/logline_details', logline: @logline %>

@@ -20,6 +20,7 @@ function User(attr){
 // }
 
 const bindClickHandlers = function(){
+
 	$('.user-show').on('click', function(e){
 		e.preventDefault();
 		$.get(this.href).done(function(response){
@@ -40,11 +41,19 @@ const bindClickHandlers = function(){
 	})
 
 	$(document).on('submit', '#new_rating', function(e){
-		e.preventDefault(e)
+		e.preventDefault()
 		$.post(this.action, $(this).serialize()).done(function(data){
-			$('.rate-form-' + data.logline_id).html("Your rating: " + data.rating)			
+			$('.rate-form-' + data.logline_id).html("Your rating: " + data.rating + "/100")			
 		})
 	})
-
 }
+
+$(document).on('click', '.logline-show', function(e){
+	e.preventDefault()
+	var dataId = parseInt($(this).data("logline-id")) + 1;
+	$.get('/loglines/' + dataId).done(function(response){
+		console.log(response)
+	})
+})
+
 
