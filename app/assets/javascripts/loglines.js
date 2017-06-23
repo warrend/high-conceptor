@@ -28,9 +28,9 @@ const bindClickHandlers = function(){
 			var user = new User(response[0]);
 			var showPage = user.renderShow();
 
-			history.pushState(null, null, "users/" + response.id)
+			history.pushState(null, null, "users/" + response[0].id)
 			$('#content').html(showPage);
-			console.log(response[1])
+			//console.log(response[1])
 		})
 	})
 
