@@ -2,6 +2,7 @@
 <%= render partial: 'logline', collection: @loglines %>
 
 <script id="show-template" type="text/x-handlebars-template">
+
 	<div data-user-id="{{id}}">
 		<a href="#" id="next">Next..</a>
 		<h1><strong>{{name}}'s Profile</strong></h1>
@@ -23,11 +24,11 @@
 			          <br>
 			          {{content}}
 			        </p>
-			       
+
 							<div class="rate-form-{{id}}" data-id="{{id}}">
-								<button class="button">Rate!</button>
+								
+								{{test this}}
 							</div>
-		
 			      </div>
 			    </div>
 			  </article>

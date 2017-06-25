@@ -2,6 +2,16 @@ $(function(){
 	bindClickHandlers();
 	User.templateSource = $('#show-template').html();
 	User.template = Handlebars.compile(User.templateSource);
+	Handlebars.registerHelper("test", function(data){
+		var result = "This isn't rated yet"
+		data.ratings.forEach(function(rating){
+			if(rating.user_id == 41){
+				result = "Already rated"
+			}
+		})
+		return result
+	})	
+
 })
 
 function User(attr){
@@ -25,12 +35,12 @@ const bindClickHandlers = function(){
 	$('.user-show').on('click', function(e){
 		e.preventDefault();
 		$.get(this.href).done(function(response){
-			var user = new User(response[0]);
+			var user = new User(response);
+			var loglines = user.loglines
 			var showPage = user.renderShow();
-
-			history.pushState(null, null, "users/" + response[0].id)
-			$('#content').html(showPage);
-			//console.log(response[1])
+			$('#content').html(showPage)
+			
+			history.pushState(null, null, "users/" + response.id)
 		})
 	})
 
@@ -52,7 +62,7 @@ const bindClickHandlers = function(){
 
 		$.get('/users/' + userId).done(function(response){
 			history.pushState(null, null, "/users/" + response.id)
-			var user = new User(response[0]);
+			var user = new User(response);
 			var showPage = user.renderShow();
 			$('#content').html(showPage);
 		}).fail(function(){
@@ -60,6 +70,7 @@ const bindClickHandlers = function(){
 		})
 	})
 }
+
 
 
 

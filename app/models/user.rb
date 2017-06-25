@@ -35,7 +35,7 @@ class User < ApplicationRecord
   end
 
   def next
-    User.where("id > ?", id).first
+    User.where("id >= ?", id).first
   end
 
 end

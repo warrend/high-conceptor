@@ -17,8 +17,9 @@ class UsersController < ApplicationController
 	def show
 		@current_user = current_user
 		@user = User.find_by_id(params[:id])
+		@user_loglines = @user.loglines
 		@next_post = @user.next
-		render :json => [@next_post, @current_user]
+		render :json => @next_post
 	end
 
 	def create
