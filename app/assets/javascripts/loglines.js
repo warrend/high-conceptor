@@ -1,15 +1,16 @@
 $(function(){
 	bindClickHandlers();
 	User.templateSource = $('#show-template').html();
+
 	User.template = Handlebars.compile(User.templateSource);
 	Handlebars.registerHelper("test", function(data){
-		var result = "This isn't rated yet"
+		var result = '<button class="button">Rate!</button>'
 		data.ratings.forEach(function(rating){
 			if(rating.user_id == 41){
-				result = "Already rated"
+				result = `Your rating: ${rating.rating}`
 			}
 		})
-		return result
+		return new Handlebars.SafeString(result)
 	})	
 
 })
