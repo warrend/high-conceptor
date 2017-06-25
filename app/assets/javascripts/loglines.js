@@ -3,11 +3,11 @@ $(function(){
 	User.templateSource = $('#show-template').html();
 
 	User.template = Handlebars.compile(User.templateSource);
-	Handlebars.registerHelper("test", function(data){
+	Handlebars.registerHelper("rateHelper", function(data){
 		var result = '<button class="button">Rate!</button>'
 		data.ratings.forEach(function(rating){
 			if(rating.user_id == 41){
-				result = `Your rating: ${rating.rating}`
+				result = `Your rating: ${rating.rating}/100`
 			}
 		})
 		return new Handlebars.SafeString(result)
