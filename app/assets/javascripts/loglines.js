@@ -1,15 +1,23 @@
 $(function(){
 	bindClickHandlers();
 	User.templateSource = $('#show-template').html();
-
 	User.template = Handlebars.compile(User.templateSource);
-	Handlebars.registerHelper("rateHelper", function(data){
+
+	Handlebars.registerHelper("rateHelper", function(data, current, user){
 		var result = '<button class="button">Rate!</button>'
+		var currentUser = parseInt(current)
+		var userId = user
+		
 		data.ratings.forEach(function(rating){
-			if(rating.user_id == 41){
+			if(rating.user_id == currentUser){
 				result = `Your rating: ${rating.rating}/100`
 			}
 		})
+
+		if(currentUser == userId){
+				result = "Owner"
+			}
+		// console.log(data)
 		return new Handlebars.SafeString(result)
 	})	
 
@@ -39,6 +47,7 @@ const bindClickHandlers = function(){
 			var user = new User(response);
 			var loglines = user.loglines
 			var showPage = user.renderShow();
+			
 			$('#content').html(showPage)
 			
 			history.pushState(null, null, "users/" + response.id)

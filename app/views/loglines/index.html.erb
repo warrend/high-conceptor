@@ -3,7 +3,7 @@
 
 <script id="show-template" type="text/x-handlebars-template">
 
-	<div data-user-id="{{id}}">
+	<div class="holder" data-user-id="{{id}}">
 		<a href="#" id="next">Next..</a>
 		<h1><strong>{{name}}'s Profile</strong></h1>
 		<br>
@@ -26,7 +26,7 @@
 			        </p>
 
 							<div class="rate-form-{{id}}" data-id="{{id}}">
-								{{rateHelper this}}
+								{{rateHelper this '<%= current_user.id %>' ../id}}
 							</div>
 			      </div>
 			    </div>
