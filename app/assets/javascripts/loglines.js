@@ -15,9 +15,9 @@ $(function(){
 		})
 
 		if(currentUser == userId){
-				result = "Owner"
-			}
-		// console.log(data)
+			result = "Owner"
+		}
+
 		return new Handlebars.SafeString(result)
 	})	
 
